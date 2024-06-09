@@ -15,6 +15,11 @@ public class HealthDisplay : MonoBehaviour
         _health.OnTakenDamage += Display;
     }
 
+    private void OnDestroy()
+    {
+        _health.OnTakenDamage -= Display;
+    }
+
     private void Display(float health)
     {
         _image.fillAmount = health;

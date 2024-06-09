@@ -29,6 +29,7 @@ public class HumanDeath : MonoBehaviour, IDie
     public void Die()
     {
         _humanRoaming.enabled = false;
+        GameEvents.SendOnHumanDeath();
 
         _target = FindObjectOfType<PlayerMovement>().transform;
     }
