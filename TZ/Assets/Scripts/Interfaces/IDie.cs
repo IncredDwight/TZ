@@ -1,0 +1,4 @@
+interface IDie
+{
+    void Die();
+}

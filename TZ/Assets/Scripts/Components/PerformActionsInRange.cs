@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(IPerformAction))]
 public class PerformActionsInRange : MonoBehaviour
 {
+    [SerializeField] private int _maxTargetsAmount = 2;
     [SerializeField] private float _radius = 5.0f;
     [SerializeField] private float _frequency = 1.0f;
     private float _timer = 0;
@@ -28,5 +29,10 @@ public class PerformActionsInRange : MonoBehaviour
         foreach (IPerformAction action in _actions)
                 action.PerformAction(targets);
         _timer = _frequency;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position, _radius);
     }
 }
