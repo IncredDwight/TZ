@@ -18,13 +18,15 @@ public class PerformActionsInRange : MonoBehaviour
 
     private void Update()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _radius, ~(1 << gameObject.layer));
 
         Perform(colliders);
     }
 
     private void Perform(Collider[] targets)
     {
+        if (targets == null)
+            return;
         foreach (IPerformAction action in _actions)
                 action.PerformAction(targets);
         _timer = _frequency;

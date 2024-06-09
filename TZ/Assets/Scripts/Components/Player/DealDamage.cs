@@ -13,6 +13,7 @@ public class DealDamage : MonoBehaviour, IPerformAction
     public void PerformAction(Collider[] targets)
     {
         int targetsAmount = (targets.Length > _maxTargetsAmount) ? _maxTargetsAmount : targets.Length;
+        targets = ColliderSorter.GetSortedCollidersByDistance(targets, transform.position);
 
         if (_timer <= 0)
         {
